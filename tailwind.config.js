@@ -6,6 +6,8 @@ module.exports = {
       backgroundImage: {
         "choose-us":
           "url('/src/images/choose-us.png')",
+        "contact-us":
+          "url('/src/images/location-bg.jpg')",
       },
     },
   },
