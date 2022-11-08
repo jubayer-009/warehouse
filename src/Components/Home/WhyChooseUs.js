@@ -4,10 +4,10 @@ const WhyChooseUs = () => {
   return (
     <div>
       <div className=" lg:p-10 bg-choose-us">
-        <h1 className="text-5xl font-bold text-center text-base-200 ">
-          <span className="text-white text-5xl font-bold px-7 ">\\</span>Why
+        <h1 className="text-3xl font-bold text-center text-base-200 ">
+          <span className="text-white text-3xl font-bold px-7 ">\\</span>Why
           Choose Us?
-          <span className="text-white text-5xl font-bold px-7 ">\\</span>
+          <span className="text-white text-3xl font-bold px-7 ">\\</span>
         </h1>
         <div className="divider mx-auto w-full lg:w-1/3 "></div>
         <div
