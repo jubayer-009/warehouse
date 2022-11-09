@@ -14,9 +14,9 @@ const ContactUs = () => {
   console.log(watch("example"));
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-base-200 p-10">
         <div className="hero-content flex-col lg:flex-row-reverse lg:justify-between">
-          <div className="text-center lg:text-left flex-initial w-96 ml-9    lg:justify-items-start ">
+          <div className="  text-left flex-initial w-96 ml-9    lg:justify-items-start mb-7s">
             <h1 className="text-5xl font-bold">Get In Touch!</h1>
             <p className="py-6">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
