@@ -1,17 +1,38 @@
-import React from 'react';
+import emailjs from "@emailjs/browser";
+import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import './Contact.css';
 
 const ContactUs = () => {
+  const form = useRef();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data,event) => {
+        emailjs
+          .sendForm(
+            "service_qldgjgb",
+            "template_v88ghjl",
+            form.current,
+            "zxociRhHmmnfoNrJ0"
+          )
+          .then(
+            (result) => {
+              console.log(result.text);
+              console.log("Message sent");
+              event.target.reset();
+            },
+            (error) => {
+              console.log(error.text);
+            }
+          );
+    console.log(data);
+  }
 
-  console.log(watch("example"));
+  
   return (
     <div>
       <div className="hero min-h-screen bg-base-200 p-10">
@@ -94,7 +115,12 @@ const ContactUs = () => {
                     \\
                   </span>
                 </h1>
-                <form className=" py-7" onSubmit={handleSubmit(onSubmit)}>
+                <form
+                  ref={form}
+                  
+                  className=" py-7"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
                   <div className="flex py-2">
                     <input
                       type="text"
