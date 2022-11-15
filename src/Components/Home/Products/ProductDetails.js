@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import RestockModal from './RestockModal';
 
 const ProductDetails = () => {
 
- const [loader,setLoader]=useState(false)
- 
-  
- const { id } = useParams();
-
+  const { id } = useParams();
   const [productDetails,setProductDetails]=useState([]);
 
   const {quantity}=productDetails;
-   
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+const [getinput,setGetInput]=useState(0);
+const getdata=(event)=>{
+  setGetInput(event.target.value);
+  console.log(getinput);
 
+}
+  
   useEffect(() => {
     fetch(`http://localhost:5000/products/${id}`)
       .then((res) => res.json())
@@ -40,6 +46,30 @@ const ProductDetails = () => {
            console.log("Data updated Succesfully");
          });
    };
+   const handleRestore = (i,q) => {
+       const inputQuantity = parseInt(getinput);
+       console.log(inputQuantity);
+
+       const quantity = q + inputQuantity;
+    setQuantityCounter(quantity);
+   console.log("clicked", quantityCounter);
+         const updatedDoc = { quantity };
+         
+         
+         fetch(`http://localhost:5000/products/${i}`, {
+           method: "PUT",
+           headers: {
+             "content-type": "application/json",
+           },
+           body: JSON.stringify(updatedDoc),
+         })
+           .then((res) => res.json())
+           .then((data) => {
+             console.log("Data updated Succesfully");
+           });
+   };
+
+   
    
   
   return (
@@ -72,12 +102,29 @@ const ProductDetails = () => {
             >
               Delivery
             </button>
-           
-            <RestockModal
-            id={id}
-            quantity={quantity}
-            
-            ></RestockModal>
+
+            <div>
+              <label
+                htmlFor="my-modal"
+                className="btn btn-sm btn-primary  text-white "
+              >
+                Restock
+              </label>
+              <input type="checkbox" id="my-modal" className="modal-toggle" />
+              <div className="modal">
+                <div className="modal-box ">
+                  <input onBlur={getdata} type="number" name="Quantity" id="" />
+                  <div className="modal-action">
+                    <button
+                      onClick={() => handleRestore(id, quantity)}
+                      className="btn btn-primary"
+                    >
+                      <label htmlFor="my-modal">Submit</label>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
