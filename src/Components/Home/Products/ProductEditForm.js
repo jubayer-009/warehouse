@@ -16,7 +16,7 @@ const ProductEditForm = ({id}) => {
     const price=data.price;
     const quantity=data.quantity;
     const updatedDoc = { name, picture, about, price, quantity };
-     fetch(`http://localhost:5000/products/${id}`, {
+     fetch(`https://waerehouse-009.herokuapp.com/products/${id}`, {
        method: "PUT",
        headers: {
          "content-type": "application/json",

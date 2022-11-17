@@ -14,7 +14,7 @@ const ProductDetails = () => {
  }
   
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://waerehouse-009.herokuapp.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProductDetails(data));
   }, [productDetails]);
@@ -26,7 +26,7 @@ const ProductDetails = () => {
      const updatedDoc = { quantity };
      setQuantityCounter(quantity);
      console.log("clicked", quantityCounter);
-       fetch(`http://localhost:5000/products/${i}`, {
+       fetch(`https://waerehouse-009.herokuapp.com/products/${i}`, {
          method: "PUT",
          headers: {
            "content-type": "application/json",
@@ -49,7 +49,7 @@ const ProductDetails = () => {
          const updatedDoc = { quantity };
          
          
-         fetch(`http://localhost:5000/products/${i}`, {
+         fetch(`https://waerehouse-009.herokuapp.com/products/${i}`, {
            method: "PUT",
            headers: {
              "content-type": "application/json",
@@ -67,16 +67,16 @@ const ProductDetails = () => {
   
   return (
     <div>
-      <div className="card lg:card-side bg-base-100 shadow-xl p-11 mr-40">
+      <div className="card lg:card-side bg-base-100 shadow-xl p-11 lg:mr-40">
         <figure className="m-5">
           <img
-            className="w-96 h-96 rounded-md"
+            className="lg:w-96 lg:h-96 rounded-md"
             src={productDetails.picture}
             alt="Album"
           />
         </figure>
         <div className="card-body  ">
-          <div className="flex justify-between w-96 pb-5">
+          <div className="flex justify-between lg:w-96 pb-5">
             <h2 className="card-title text-primary font-bold">
               {productDetails.name}
             </h2>

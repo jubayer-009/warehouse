@@ -4,11 +4,11 @@ import Service from './Service';
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://waerehouse-009.herokuapp.com/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
-  console.log(services);
+ 
   return (
     <div className=" my-9 mx-9 p-10">
       <h1 className="text-4xl font-bold text-center text-primary ">

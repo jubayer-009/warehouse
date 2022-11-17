@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Product = ({ product }) => {
+const Product = ({ product ,handleCart}) => 
+{
   const {name,picture,price,quantity,about,_id}=product;
   const navigate=useNavigate();
   const handleProduct=(id)=>{
@@ -17,10 +18,21 @@ const Product = ({ product }) => {
         <h1 className="text-xl font-bold "> {name}</h1>
 
         <div className="card-actions justify-start">
-          <button 
-          onClick={()=>handleProduct(_id)}
-          to="/productDetails" className="btn btn-primary text-white">
+          <button
+            onClick={() =>
+              handleProduct(_id, name, picture, price, quantity, about)
+            }
+            to="/productDetails"
+            className="btn btn-primary text-white"
+          >
             Details
+          </button>
+          <button
+            // onClick={()=>handleProduct(_id)}
+            onClick={() => handleCart(_id)}
+            className="btn btn-primary text-white"
+          >
+            Add to cart
           </button>
         </div>
       </div>

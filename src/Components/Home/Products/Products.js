@@ -2,7 +2,7 @@ import React from 'react';
 import useProducts from '../../../Hooks/useProducts';
 import Product from './Product';
 
-const Products = () => {
+const Products = ({handleCart}) => {
   const [products]=useProducts();
   
   return (
@@ -15,7 +15,13 @@ const Products = () => {
       <div className="divider mx-auto w-1/2 lg:w-1/3 "></div>
       <div className="card lg:card-side   grid  lg:grid-cols-3 grid-cols-1 gap-4 bg-base-100 p-7">
         {products.map((product) => (
-          <Product product={product}></Product>
+          <Product product={product}
+          
+          handleCart={handleCart}
+          
+          
+          
+          ></Product>
         ))}
       </div>
     </div>

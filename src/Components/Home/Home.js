@@ -7,7 +7,7 @@ import Banner from './Banner';
 import ContactUs from './ContactUs';
 import Products from './Products/Products';
 
-const Home = () => {
+const Home = ({ clickCount, setClickCount, handleCart }) => {
   const [user, loading, error] = useAuthState(auth);
   if (loading) {
     return <Loading></Loading>;
@@ -17,7 +17,11 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <Services></Services>
-      <Products></Products>
+      <Products
+        clickCount={clickCount}
+        setClickCount={setClickCount}
+        handleCart={handleCart}
+      ></Products>
       {/* <About></About> */}
       {/* <WhyChooseUs></WhyChooseUs> */}
       <ContactUs></ContactUs>
