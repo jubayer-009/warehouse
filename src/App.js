@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Cart from './Components/Cart/Cart';
@@ -10,20 +9,20 @@ import Navbar from "./Components/Navbar";
 import SignUp from "./Components/Signup";
 
 function App() {
-   const [clickCount, setClickCount] = useState(0);
-   const [cartProduct,setCartProduct]=useState([]);
+  //  const [clickCount, setClickCount] = useState(0);
+
     //  const [user, loading, error] = useAuthState(auth);
       //  const { email } = user;
-   const handleCart = (id) => {
+  //  const handleCart = (id) => {
   
-    setClickCount(clickCount + 1);
-        fetch(`https://waerehouse-009.herokuapp.com/products/${id}`)
-          .then((res) => res.json())
-          .then((data) =>setCartProduct(data));
+  //   setClickCount(clickCount + 1);
+  //       fetch(`http://localhost:5000/products/${id}`)
+  //         .then((res) => res.json())
+  //         .then((data) =>setCartProduct(data));
     
       
-     console.log(clickCount, id, cartProduct);
-    //  fetch("https://waerehouse-009.herokuapp.com/cart", {
+  //    console.log(clickCount, id, cartProduct);
+    //  fetch("http://localhost:5000/cart", {
     //    method: "POST",
     //    body: JSON.stringify(cartProduct),
     //    headers: {
@@ -36,20 +35,20 @@ function App() {
     //      window.alert("added to cart");
     //    });
  
-    };
+    //};
     
    
   return (
     <div>
-      <Navbar clickCount={clickCount}></Navbar>
+      <Navbar></Navbar>
       <Routes>
         <Route
           path="/"
           element={
             <Home
-              clickCount={clickCount}
-              setClickCount={setClickCount}
-              handleCart={handleCart}
+              // clickCount={clickCount}
+              // setClickCount={setClickCount}
+              // handleCart={handleCart}
             ></Home>
           }
         ></Route>

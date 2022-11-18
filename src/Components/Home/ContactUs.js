@@ -34,7 +34,7 @@ const ContactUs = () => {
 
   
   return (
-    <div>
+    <div id="contact">
       <div className="hero min-h-screen bg-base-200 p-10">
         <div className="hero-content flex-col lg:flex-row-reverse lg:justify-between">
           <div className="  text-left flex-initial w-96 ml-9    lg:justify-items-start mb-7s">

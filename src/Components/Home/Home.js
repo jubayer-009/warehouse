@@ -9,6 +9,7 @@ import Products from './Products/Products';
 
 const Home = ({ clickCount, setClickCount, handleCart }) => {
   const [user, loading, error] = useAuthState(auth);
+ 
   if (loading) {
     return <Loading></Loading>;
   }

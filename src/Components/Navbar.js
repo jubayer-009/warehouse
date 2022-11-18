@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 
 import { signOut } from 'firebase/auth';
 import auth from "../firebase.init";
+import UseCartData from '../Hooks/UseCartData';
 
 const Navbar = ({ clickCount }) => {
   const [user, loading, error] = useAuthState(auth);
+   const [cartData] = UseCartData();
+   console.log(cartData);
 
   const handleSignOut = () => {
     signOut(auth);
@@ -40,17 +43,17 @@ const Navbar = ({ clickCount }) => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <a>Services</a>
+                <a href="#services">Services</a>
               </li>
               <li>
-                <a>Our products</a>
+                <a href="#products">Our products</a>
               </li>
               <li>
-                <a>Contact us</a>
+                <a href="#contact">Contact us</a>
               </li>
             </ul>
           </div>
-          <a href="#" className="btn btn-ghost normal-case text-xl">
+          <a href="/" className="btn btn-ghost normal-case text-xl">
             SM Enterprise
           </a>
         </div>
@@ -60,13 +63,13 @@ const Navbar = ({ clickCount }) => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <a>Services</a>
+              <a href="#services">Services</a>
             </li>
             <li>
-              <a>Our products</a>
+              <a href="#products">Our products</a>
             </li>
             <li>
-              <a>Contact us</a>
+              <a href="#contact">Contact us</a>
             </li>
           </ul>
         </div>
@@ -103,7 +106,7 @@ const Navbar = ({ clickCount }) => {
           <div className="indicator ml-5">
             <Link to="/cart">
               <span className="indicator-item badge badge-secondary badge-xs">
-                {clickCount}
+                {cartData.length}
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

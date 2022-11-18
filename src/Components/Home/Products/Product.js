@@ -1,14 +1,26 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Product = ({ product ,handleCart}) => 
-{
-  const {name,picture,price,quantity,about,_id}=product;
-  const navigate=useNavigate();
-  const handleProduct=(id)=>{
-    navigate(`/productDetails/${id}`);
+const Product = ({ product, email }) => {
+  const { name, picture, price, quantity, about, _id } = product;
 
-  }
+  const navigate = useNavigate();
+  const handleCart = (id, name, picture, price, quantity, email) => {
+    // console.log(id, name, picture, price, quantity, email);
+    const productInfo = { id, name, picture, price, quantity, email };
+    fetch("http://localhost:5000/cart", {
+      method: "POST",
+      body: JSON.stringify(productInfo),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+  const handleProduct = (id) => {
+    navigate(`/productDetails/${id}`);
+  };
   return (
     <div className="bg-base-100 border border-primary rounded-lg  shadow-xl">
       <figure className="rounded-lg">
@@ -29,7 +41,9 @@ const Product = ({ product ,handleCart}) =>
           </button>
           <button
             // onClick={()=>handleProduct(_id)}
-            onClick={() => handleCart(_id)}
+            onClick={() =>
+              handleCart(_id, name, picture, price, quantity, email)
+            }
             className="btn btn-primary text-white"
           >
             Add to cart

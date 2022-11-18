@@ -14,7 +14,7 @@ const ProductDetails = () => {
  }
   
   useEffect(() => {
-    fetch(`https://waerehouse-009.herokuapp.com/products/${id}`)
+    fetch(`http://localhost:5000/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProductDetails(data));
   }, [productDetails]);
@@ -26,7 +26,7 @@ const ProductDetails = () => {
      const updatedDoc = { quantity };
      setQuantityCounter(quantity);
      console.log("clicked", quantityCounter);
-       fetch(`https://waerehouse-009.herokuapp.com/products/${i}`, {
+       fetch(`http://localhost:5000/products/${i}`, {
          method: "PUT",
          headers: {
            "content-type": "application/json",
@@ -49,7 +49,7 @@ const ProductDetails = () => {
          const updatedDoc = { quantity };
          
          
-         fetch(`https://waerehouse-009.herokuapp.com/products/${i}`, {
+         fetch(`http://localhost:5000/products/${i}`, {
            method: "PUT",
            headers: {
              "content-type": "application/json",
