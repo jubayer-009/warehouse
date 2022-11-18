@@ -9,7 +9,7 @@ import UseCartData from '../Hooks/UseCartData';
 const Navbar = ({ clickCount }) => {
   const [user, loading, error] = useAuthState(auth);
    const [cartData] = UseCartData();
-   console.log(cartData);
+
 
   const handleSignOut = () => {
     signOut(auth);

@@ -7,7 +7,7 @@ import Product from './Product';
 const Products = ({handleCart}) => {
   const [products]=useProducts();
   const [user, loading, error] = useAuthState(auth);
- const {email}=user;
+
 //  console.log(email);
   
   return (
@@ -22,7 +22,7 @@ const Products = ({handleCart}) => {
         {products.map((product) => (
           <Product
             product={product}
-            email={email}
+            email={user?.email}
             handleCart={handleCart}
           ></Product>
         ))}

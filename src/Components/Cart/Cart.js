@@ -4,14 +4,14 @@ import CartProduct from './CartProduct';
 
 const Cart = () => {
   const [cartData]=UseCartData();
+  
   return (
     <div className="py-10">
       <div >
-        {
-          cartData.map((data)=>
-          <CartProduct
-          data={data}
-          ></CartProduct>)
+        { 
+          cartData.map((data)=><CartProduct data={data} ></CartProduct>
+         
+          )
         }
       </div>
     </div>
